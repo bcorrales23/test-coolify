@@ -31,7 +31,7 @@ RUN /opt/app/mvnw clean package -DskipTests
 
 
 # STAGE 2: RUN APP
-FROM eclipse-temurin:17-jre AS production
+FROM eclipse-temurin:25-jre AS production
 ENV TZ="America/Lima"
 ENV JAVA_TOOL_OPTIONS="-Duser.timezone=America/Lima"
 WORKDIR /opt/app
