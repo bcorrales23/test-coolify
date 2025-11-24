@@ -4,7 +4,7 @@ FROM eclipse-temurin:25-jdk AS builder
 ENV TZ="America/Lima"
 ENV JAVA_TOOL_OPTIONS="-Duser.timezone=America/Lima"
 # PUERTO DEL CONTENEDOR
-EXPOSE 8085
+EXPOSE 8080
 
 # CARPETA PARA LA APLICACIÓN
 RUN mkdir /opt/app
@@ -36,7 +36,7 @@ ENV TZ="America/Lima"
 ENV JAVA_TOOL_OPTIONS="-Duser.timezone=America/Lima"
 WORKDIR /opt/app
 COPY --from=builder /opt/app/target/*.jar app.jar
-EXPOSE 8085
+EXPOSE 8080
 # Levantar la aplicación cuando inicie el contenedor
 # "--spring.config.location=file:${configDirectory}/application.properties"
 ENTRYPOINT ["java", "-jar", "app.jar"]
