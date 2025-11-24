@@ -15,8 +15,10 @@ COPY ./.mvn ./.mvn
 COPY ./mvnw .
 
 # CONVERT
-RUN apt-get update && apt-get install -y dos2unix
-RUN dos2unix /opt/app/mvnw
+# CONVERT Y PERMISOS
+RUN apt-get update && apt-get install -y dos2unix \
+    && dos2unix /opt/app/mvnw \
+    && chmod +x /opt/app/mvnw   # <-- Asegura que mvnw sea ejecutableRUN dos2unix /opt/app/mvnw
 
 # DESCARGAR DEPENDENCIAS
 RUN ./mvnw dependency:go-offline
